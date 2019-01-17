@@ -24,6 +24,7 @@ def pow_function(a,b):
 numbers = r'[0-9]+[.]?[0-9]?' #search float or int number
 allnumbers = re.findall(numbers, paradigm)
 symb = r'[\+\-\*\/\^]' #search '+-*/^'
+
 paradigm_symbol = re.findall(symb, paradigm)
 
 a = float((allnumbers[0]))
@@ -35,7 +36,8 @@ switcher = {
 	'*': multiple_function(a,b),
 	'-': subt_function(a,b),
 	'/': div_function(a,b),
-    '^': pow_function(a,b)
+    '^': pow_function(a,b),
+	'/': div_function(a,b)
 }
 
 
