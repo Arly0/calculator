@@ -1,5 +1,6 @@
-print("Введите пример.")
-paradigm = input()
+import re
+
+paradigm = input("Введите пример: ")
 
 def summ_function(a,b):
 	return a + b
@@ -13,23 +14,21 @@ def subt_function(a,b):
 def div_function(a,b):
 	return a / b
 
-# ВАЖНО! функции объявлять перед выполнением.
-# Тут нужно будет строку,который вводит юзер разобрать на
-# числа, с которыми будут производиться вычисления. 
-# Ко всему прочему нужно определить знак и в соотношении с ним
-# запустить нужную функцию и передать параметры. И вернуть ответ.
+numbers = r'[0-9]+[.]?[0-9]?' #search float or int number
+allnumbers = re.findall(numbers, paradigm)
+symb = r'[\+\-\*\/]' #search '+-*/'
+paradigm_symbol = re.findall(symb, paradigm)
 
-# тут предположительно будет знак и числа, которые спарсяться
-symbol = "+"
-a = 13
-b = 2
+a = float((allnumbers[0]))
+b = float((allnumbers[1]))
+symbol = (paradigm_symbol[0])
 
 switcher = {
 	'+': summ_function(a,b),
-	'-': multiple_function(a,b),
-	'*': subt_function(a,b),
+	'*': multiple_function(a,b),
+	'-': subt_function(a,b),
 	'/': div_function(a,b)
 }
 
 
-print(switcher[symbol])
+print('Ответ: ' + str(switcher[symbol]))
