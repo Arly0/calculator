@@ -12,6 +12,10 @@ def subt_function(a,b):
 	return a - b
 
 def div_function(a,b):
+	try:
+		a / b
+	except ZeroDivisionError:
+		return "На ноль делить нельзя"
 	return a / b
 
 numbers = r'[0-9]+[.]?[0-9]?' #search float or int number
